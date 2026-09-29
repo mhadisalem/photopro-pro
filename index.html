@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#090a0d">
+  <meta name="description" content="PhotoPro Pro — دوربین حرفه‌ای موبایل">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.png">
+  <link rel="stylesheet" href="style.css">
+  <title>PhotoPro Pro</title>
+</head>
+<body>
+<main class="app">
+
+  <header class="topbar glass">
+    <div>
+      <div class="eyebrow">PRO MOBILE CAMERA</div>
+      <h1>PhotoPro <span>PRO</span></h1>
+    </div>
+    <div class="top-actions">
+      <button id="torchTop" class="icon-btn" aria-label="چراغ">☼</button>
+      <button id="settingsBtn" class="icon-btn" aria-label="تنظیمات">⚙</button>
+    </div>
+  </header>
+
+  <section class="camera-card">
+    <div class="preview" id="preview">
+      <video id="video" autoplay playsinline muted></video>
+      <canvas id="captureCanvas" hidden></canvas>
+      <img id="photo" alt="عکس" hidden>
+      <div id="grid" class="camera-grid hidden"><i></i><i></i><i></i><i></i></div>
+      <div id="focusRing" class="focus-ring"></div>
+
+      <div class="hud hud-top">
+        <div class="pill"><b id="modeBadge">AUTO</b></div>
+        <div class="pill"><span id="zoomLabel">1.0×</span></div>
+        <div class="pill"><span id="resolution">--</span></div>
+      </div>
+
+      <div class="hud hud-bottom">
+        <button class="mini" id="histogramBtn">◒</button>
+        <div class="meter"><span id="meterFill"></span></div>
+        <span id="status">در حال آماده‌سازی دوربین…</span>
+      </div>
+    </div>
+
+    <div class="quick glass">
+      <button class="quick-item active" data-setting="iso"><strong id="isoValue">AUTO</strong><span>ISO</span></button>
+      <button class="quick-item active" data-setting="shutter"><strong id="shutterValue">AUTO</strong><span>SHUTTER</span></button>
+      <button class="quick-item" data-setting="exposure"><strong id="exposureValue">0.0</strong><span>EV</span></button>
+      <button class="quick-item" data-setting="wb"><strong id="wbValue">AUTO</strong><span>WB</span></button>
+      <button class="quick-item" data-setting="focus"><strong id="focusValue">AF</strong><span>FOCUS</span></button>
+    </div>
+
+    <div class="zoom-row">
+      <button data-zoom="0.5">0.5×</button>
+      <button data-zoom="1">1×</button>
+      <button data-zoom="2">2×</button>
+      <input id="zoomSlider" type="range" min="1" max="1" step="0.1" value="1" aria-label="زوم">
+      <span id="zoomMax">1×</span>
+    </div>
+  </section>
+
+  <section class="control-dock glass">
+    <div class="dock-row">
+      <button class="dock-btn" id="galleryBtn"><b>▣</b><span>گالری</span></button>
+      <button class="dock-btn" id="aspectBtn"><b>▤</b><span id="aspectText">4:3</span></button>
+      <button class="shutter" id="captureBtn" aria-label="عکاسی"><span></span></button>
+      <button class="dock-btn" id="flipBtn"><b>↔</b><span>دوربین</span></button>
+      <button class="dock-btn" id="filterBtn"><b>✦</b><span>فیلتر</span></button>
+    </div>
+    <div class="dock-row secondary">
+      <button class="dock-btn" id="proBtn"><b>PRO</b><span>حالت</span></button>
+      <button class="dock-btn" id="timerBtn"><b>3s</b><span>تایمر</span></button>
+      <button class="dock-btn" id="gridBtn"><b>⊞</b><span>گرید</span></button>
+      <button class="dock-btn" id="editBtn"><b>✎</b><span>ویرایش</span></button>
+      <button class="dock-btn" id="saveBtn"><b>↓</b><span>ذخیره</span></button>
+    </div>
+  </section>
+
+  <section id="galleryStrip" class="gallery-strip glass hidden">
+    <div class="gallery-head"><strong>گالری PhotoPro</strong><button id="clearGallery">پاک‌سازی</button></div>
+    <div id="thumbs" class="thumbs"></div>
+  </section>
+
+  <input id="fileInput" type="file" accept="image/*" hidden>
+
+  <div id="panel" class="panel" hidden>
+    <div class="panel-card glass">
+      <div class="panel-head">
+        <h2 id="panelTitle">تنظیمات</h2>
+        <button id="closePanel" class="close">×</button>
+      </div>
+      <div id="panelContent"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
